@@ -1,0 +1,62 @@
+
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.carousel-img {
+    height: 450px;
+    object-fit: cover;
+    filter: brightness(55%);
+}
+
+.carousel-caption {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+}
+
+.carousel-caption h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+}
+
+.profile-text {
+    max-width: 700px;
+    line-height: 1.8;
+}
+
+.project-img {
+    height: 210px;
+    object-fit: cover;
+}
+
+.card {
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+section {
+    scroll-margin-top: 75px;
+}
+
+@media (max-width: 576px) {
+    .carousel-img {
+        height: 300px;
+    }
+
+    .carousel-caption p {
+        font-size: 0.85rem;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.8rem;
+    }
+}
