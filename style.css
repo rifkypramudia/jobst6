@@ -1,0 +1,909 @@
+
+
+/* ========================================
+   1. PENGATURAN DASAR
+======================================== */
+:root {
+    --primary: #635bff;
+    --primary-dark: #4b42e8;
+    --secondary: #ff6584;
+    --accent: #ffb84d;
+    --soft-bg: #f7f8ff;
+    --text-main: #252746;
+    --text-muted: #73778c;
+    --card-bg: #ffffff;
+    --border-color: #e9eaf4;
+    --shadow: 0 10px 30px rgba(37, 39, 70, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text-main);
+    background-color: var(--card-bg);
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section {
+    scroll-margin-top: 75px;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ========================================
+   2. NAVBAR
+======================================== */
+.navbar {
+    min-height: 76px;
+    z-index: 1000;
+}
+
+.brand-logo {
+    color: var(--primary) !important;
+    font-size: 1.55rem;
+    letter-spacing: -0.7px;
+}
+
+.brand-logo i {
+    color: var(--secondary);
+}
+
+.navbar .nav-link {
+    color: var(--text-main);
+    font-weight: 500;
+    margin: 0 7px;
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: var(--primary);
+}
+
+.navbar .btn-outline-primary {
+    border-color: var(--primary);
+    color: var(--primary);
+    border-radius: 10px;
+}
+
+.navbar .btn-outline-primary:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+#darkModeToggle {
+    border-radius: 9px;
+}
+
+/* ========================================
+   3. HERO BANNER
+======================================== */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    padding: 85px 0;
+    color: #fff;
+    background: linear-gradient(
+        120deg,
+        #5b52ef 0%,
+        #7765f7 50%,
+        #a47af8 100%
+    );
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border: 55px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    top: -160px;
+    right: -80px;
+    pointer-events: none;
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    background: rgba(255, 184, 77, 0.12);
+    border-radius: 50%;
+    bottom: -130px;
+    left: -70px;
+    pointer-events: none;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -1.5px;
+}
+
+.hero-title span {
+    display: block;
+    color: #ffe19a;
+}
+
+.hero-description {
+    max-width: 530px;
+    margin: 22px 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.05rem;
+}
+
+.hero-button {
+    color: var(--primary);
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(35, 25, 100, 0.15);
+    transition: transform 0.25s ease;
+}
+
+.hero-button:hover {
+    color: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.hero-section .btn-outline-light {
+    border-radius: 12px;
+}
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.9rem;
+}
+
+.hero-features i {
+    color: #ffe19a;
+    margin-right: 5px;
+}
+
+.hero-image-wrapper {
+    position: relative;
+    padding: 15px;
+}
+
+.hero-image {
+    display: block;
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border: 6px solid rgba(255, 255, 255, 0.25);
+    border-radius: 28px;
+    box-shadow: 0 20px 50px rgba(36, 25, 105, 0.25);
+    transform: rotate(1deg);
+}
+
+.floating-card {
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 16px 20px;
+    color: #252746;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+.floating-card > i {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6584, #ff9b76);
+    border-radius: 12px;
+    font-size: 1.4rem;
+}
+
+.floating-card strong,
+.floating-card small {
+    display: block;
+}
+
+.floating-card small {
+    color: #73778c;
+    font-size: 0.8rem;
+}
+
+@keyframes floatCard {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+/* ========================================
+   4. KEUNGGULAN
+======================================== */
+.benefit-section {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    height: 100%;
+}
+
+.benefit-item > i {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    color: var(--primary);
+    background: #eeedff;
+    border-radius: 14px;
+    font-size: 1.4rem;
+}
+
+.benefit-item h6 {
+    margin: 0 0 2px;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.benefit-item small {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* ========================================
+   5. JUDUL SECTION
+======================================== */
+.section-padding {
+    padding: 85px 0;
+}
+
+.section-heading {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.section-label {
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2,
+.about-title {
+    margin: 10px 0;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.section-heading h2 span,
+.about-title span {
+    color: var(--primary);
+}
+
+.section-heading p {
+    color: var(--text-muted);
+}
+
+/* ========================================
+   6. KATALOG PRODUK
+======================================== */
+.product-section {
+    background: var(--soft-bg);
+}
+
+.product-card {
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(37, 39, 70, 0.035);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 16px 35px rgba(37, 39, 70, 0.12);
+}
+
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 225px;
+    background: #f1f1fa;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.07);
+}
+
+.product-badge {
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    z-index: 1;
+    padding: 5px 11px;
+    color: #fff;
+    background: var(--secondary);
+    border-radius: 7px;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.badge-green {
+    background: #16a779;
+}
+
+.badge-orange {
+    background: #f49a24;
+}
+
+.badge-purple {
+    background: #8c56dc;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-category {
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.product-info h5 {
+    margin: 7px 0;
+    font-size: 1.08rem;
+    font-weight: 750;
+}
+
+.product-info > p {
+    min-height: 48px;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+    font-size: 0.87rem;
+}
+
+.product-rating {
+    margin-bottom: 15px;
+    color: #f5a623;
+    font-size: 0.86rem;
+}
+
+.product-rating span {
+    margin-left: 4px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border-color);
+}
+
+.product-bottom strong {
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+.product-bottom .btn {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    background: var(--primary);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.product-bottom .btn:hover {
+    background: var(--primary-dark);
+    transform: scale(1.07);
+}
+
+/* ========================================
+   7. KERANJANG BELANJA
+======================================== */
+.cart-section {
+    background: var(--card-bg);
+}
+
+.cart-box {
+    padding: 30px;
+    background: linear-gradient(120deg, #f0efff, #fff1f5);
+    border: 1px solid #e5e0ff;
+    border-radius: 20px;
+}
+
+.cart-icon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), #a47af8);
+    border-radius: 16px;
+    font-size: 1.7rem;
+}
+
+.cart-box h3 {
+    margin-bottom: 4px;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.cart-box p {
+    color: #666981;
+}
+
+.cart-total {
+    color: var(--primary);
+    font-size: 1.8rem !important;
+}
+
+.cart-note {
+    font-size: 0.85rem;
+}
+
+/* ========================================
+   8. TENTANG KAMI
+======================================== */
+.about-image {
+    width: 100%;
+    max-height: 430px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.about-title {
+    line-height: 1.25;
+}
+
+.about-description {
+    margin: 20px 0;
+    color: var(--text-muted);
+}
+
+.about-list {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+.about-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.about-list i {
+    margin-top: 4px;
+    color: #16a779;
+}
+
+.about-section .btn-primary,
+.contact-card .btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-weight: 600;
+}
+
+.about-section .btn-primary:hover,
+.contact-card .btn-primary:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* ========================================
+   9. FORM KONTAK
+======================================== */
+.contact-section {
+    background: var(--soft-bg);
+}
+
+.contact-card {
+    max-width: 650px;
+    padding: 35px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.form-label {
+    color: var(--text-main);
+    font-weight: 650;
+}
+
+.form-control {
+    padding: 12px 14px;
+    color: var(--text-main);
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    border-radius: 10px;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(99, 91, 255, 0.14);
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+/* ========================================
+   10. FOOTER
+======================================== */
+.footer-section {
+    padding: 55px 0 22px;
+    color: #e8e8f5;
+    background: #22213f;
+}
+
+.footer-brand {
+    color: #fff;
+    font-size: 1.55rem;
+    font-weight: 800;
+}
+
+.footer-brand i {
+    color: #ff6584;
+}
+
+.footer-description {
+    max-width: 350px;
+    color: #b8b8ce;
+    font-size: 0.9rem;
+}
+
+.footer-section h6 {
+    margin-bottom: 18px;
+    color: #fff;
+    font-weight: 750;
+}
+
+.footer-links {
+    display: grid;
+    gap: 9px;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-links a {
+    color: #b8b8ce;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #ffb84d;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.social-links a {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 11px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    background: var(--primary);
+    transform: translateY(-3px);
+}
+
+.footer-divider {
+    margin: 30px 0 20px;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.copyright {
+    color: #b8b8ce;
+    font-size: 0.82rem;
+}
+
+/* ========================================
+   11. DARK MODE
+======================================== */
+body[data-bs-theme="dark"] {
+    --soft-bg: #171827;
+    --text-main: #f0f0fa;
+    --text-muted: #b0b2c8;
+    --card-bg: #222337;
+    --border-color: #383950;
+    background-color: #171827;
+    color: #f0f0fa;
+}
+
+body[data-bs-theme="dark"] .navbar,
+body[data-bs-theme="dark"] .benefit-section,
+body[data-bs-theme="dark"] .cart-section {
+    background-color: #222337 !important;
+}
+
+body[data-bs-theme="dark"] .navbar .nav-link {
+    color: #e5e5f5;
+}
+
+body[data-bs-theme="dark"] .navbar .nav-link:hover {
+    color: #aaa3ff;
+}
+
+body[data-bs-theme="dark"] .product-section,
+body[data-bs-theme="dark"] .contact-section {
+    background-color: #171827;
+}
+
+body[data-bs-theme="dark"] .product-card,
+body[data-bs-theme="dark"] .contact-card {
+    background-color: #222337;
+    border-color: #383950;
+}
+
+body[data-bs-theme="dark"] .product-info h5,
+body[data-bs-theme="dark"] .benefit-item h6,
+body[data-bs-theme="dark"] .cart-box h3 {
+    color: #f0f0fa;
+}
+
+body[data-bs-theme="dark"] .cart-box {
+    background: linear-gradient(120deg, #292747, #342537);
+    border-color: #474062;
+}
+
+body[data-bs-theme="dark"] .cart-box p,
+body[data-bs-theme="dark"] .cart-note {
+    color: #d0cee5;
+}
+
+body[data-bs-theme="dark"] .form-control {
+    color: #f0f0fa;
+    background-color: #171827;
+    border-color: #44455f;
+}
+
+body[data-bs-theme="dark"] .form-control::placeholder {
+    color: #999bb3;
+}
+
+body[data-bs-theme="dark"] .form-label {
+    color: #f0f0fa;
+}
+
+body[data-bs-theme="dark"] .floating-card {
+    color: #252746;
+    background-color: #fff;
+}
+
+body[data-bs-theme="dark"] .benefit-item > i {
+    background: #343052;
+    color: #b7b0ff;
+}
+
+body[data-bs-theme="dark"] .product-image-wrapper {
+    background: #303147;
+}
+
+/* ========================================
+   12. RESPONSIVE TABLET DAN HP
+======================================== */
+@media (max-width: 991.98px) {
+    .hero-section {
+        padding: 65px 0;
+    }
+
+    .hero-image-wrapper {
+        margin-top: 15px;
+        padding: 10px;
+    }
+
+    .hero-image {
+        height: 340px;
+    }
+
+    .floating-card {
+        left: 0;
+    }
+
+    .section-padding {
+        padding: 65px 0;
+    }
+
+    .benefit-item {
+        align-items: flex-start;
+    }
+
+    .navbar .navbar-collapse {
+        padding: 15px 0;
+    }
+
+    .navbar .nav-link {
+        margin: 4px 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-section {
+        padding: 48px 0;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+        letter-spacing: -0.8px;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-section .btn {
+        width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .hero-image {
+        height: 260px;
+        border-radius: 20px;
+    }
+
+    .floating-card {
+        bottom: -5px;
+        padding: 11px 13px;
+    }
+
+    .floating-card > i {
+        width: 38px;
+        height: 38px;
+    }
+
+    .floating-card small {
+        font-size: 0.7rem;
+    }
+
+    .hero-features {
+        gap: 10px;
+        font-size: 0.78rem;
+    }
+
+    .section-padding {
+        padding: 55px 0;
+    }
+
+    .section-heading h2,
+    .about-title {
+        font-size: 1.9rem;
+    }
+
+    .product-image-wrapper {
+        height: 190px;
+    }
+
+    .product-info {
+        padding: 15px;
+    }
+
+    .product-info h5 {
+        font-size: 1rem;
+    }
+
+    .product-info > p {
+        font-size: 0.82rem;
+    }
+
+    .product-bottom strong {
+        font-size: 0.95rem;
+    }
+
+    .cart-box {
+        padding: 22px 18px;
+    }
+
+    .cart-box h3 {
+        font-size: 1.1rem;
+    }
+
+    .cart-total {
+        font-size: 1.55rem !important;
+    }
+
+    .contact-card {
+        padding: 22px 18px;
+    }
+
+    .footer-section {
+        padding-top: 40px;
+    }
+}
+
+/* Mengurangi animasi untuk pengguna yang memilih
+   preferensi gerakan minimal */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
